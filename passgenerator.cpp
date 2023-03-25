@@ -13,29 +13,35 @@ class PasswordGenerator {
             length = len;
         }
         string generatePassword() {
-            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]|:;<>?/~";
+            string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string numbers = "0123456789";
+            string specialChars = "!@#$%^&*()_+-={}[]|:;<>?/~";
+            string allChars = lowercase + uppercase + numbers + specialChars;
             srand(time(NULL));
             string password = "";
             for (int i = 0; i < length; i++) {
-                password += chars[rand() % chars.length()];
+                password += allChars[rand() % allChars.length()];
             }
             return password;
         }
 };
 
 int main() {
+    int length = 0;
     while (true) {
-        int length;
-        cout << "Enter password length: ";
+        cout << "Enter password length (at least 8 characters): ";
         cin >> length;
-        if (length < 8) {
-            cout << "Password length must be at least 8 characters." << endl;
-            continue;
+ 
+        if (length >= 8) {
+            PasswordGenerator p(length);
+            string password = p.generatePassword();
+            cout << "Your password is: " << password << endl; 
+            break;
         }
-        PasswordGenerator p(length);
-        string password = p.generatePassword();
-        cout << "Your password is: " << password << endl;
-        break;
+        else {
+            cout << "Password must be at least 8 characters.\n";
+        }
     }
     return 0;
 }
