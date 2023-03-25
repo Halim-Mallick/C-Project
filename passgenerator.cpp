@@ -24,14 +24,18 @@ class PasswordGenerator {
 };
 
 int main() {
-    cout<< "Do you want to create your password Automatically?";
-    while(true){
-    int length;
-    cout <<endl<< "Enter password length: ";
-    cin >> length;
-    PasswordGenerator p(length);
-    string password = p.generatePassword();
-    cout << "Your password is: " << password << endl;
-   }
+    while (true) {
+        int length;
+        cout << "Enter password length: ";
+        cin >> length;
+        if (length < 8) {
+            cout << "Password length must be at least 8 characters." << endl;
+            continue;
+        }
+        PasswordGenerator p(length);
+        string password = p.generatePassword();
+        cout << "Your password is: " << password << endl;
+        break;
+    }
     return 0;
 }
