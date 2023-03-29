@@ -42,8 +42,17 @@ public:
             return calculate();
         } 
         
+        else if (input == "thanks" || input == "ok" || input == "thank you") {
+            return "OK, thank you.Have your any question?";
+            
+        }
         else if (input == "what are you doing" || input == "what you do" || input == "how do you do") {
             return "i'm talk to with you";
+            
+        }
+        
+        else if (input == "say something about oop maam" || input == "About shifat jahan setu maam" || input == "tell us about oop maam") {
+            return "Sure!I am talking about her shortly.\n\n Sifat Jahan Setu is a teacher of Object Oriented Programming Language\n His teaching style is different and his voice is great for learning\n";
             
         }
         
@@ -55,7 +64,7 @@ public:
             return "ami robot, tai amar apnader moto kono kritim buddhimotta ba saririk onuvuti nei,\n tai ami prem korte parina.";
         } 
         else {
-            return "I'm sorry! I didn't understand that.\nI think you have a spelling mistake or I don't understand what you ask me.";
+            return "I'm sorry! I didn't understand that.\nI think you have a spelling mistake or I don't understand what you say.";
         }
     }
 
@@ -111,9 +120,10 @@ int main() {
     while (true) {
         cout<<endl <<  "You: ";
         getline(cin, input);
-        if (input == "exit") 
+        if (input == "exit"){
             printSlowly("Okay, Have a nice day!");
             break;
+        }
         string response = bot.getResponse(input);
         printSlowly("Bot: " + response + "\n");
     }
